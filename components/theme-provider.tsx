@@ -47,6 +47,18 @@ function ThemeHotkey() {
         return
       }
 
+      if (typeof event.key !== "string") {
+        console.log("[hotkey-probe]", {
+          ctor: event.constructor?.name,
+          isTrusted: event.isTrusted,
+          type: event.type,
+          key: event.key,
+          target: (event.target as HTMLElement | null)?.tagName,
+          keys: Object.keys(event),
+        })
+        return
+      }
+
       if (event.key.toLowerCase() !== "d") {
         return
       }
